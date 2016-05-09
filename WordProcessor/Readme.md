@@ -27,3 +27,9 @@ NOTE: There are fully implemented unit tests for these scenarios. You just need 
 ### Summary
 
 Your goal is to implement the "CorrectionFinder" class to accomodate the logic described above.
+
+### Tools
+
+This example was written in Visual Studio 2015.  A compatible free version can be found here: https://www.visualstudio.com/en-us/products/visual-studio-community-vs
+
+
