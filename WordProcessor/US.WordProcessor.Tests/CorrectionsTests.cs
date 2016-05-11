@@ -68,14 +68,14 @@ namespace US.WordProcessor.Tests
       [TestMethod]
       public void RegularNounsDoNotNeedAnApostropheIncorrect()
       {
-         var p = new Paragraph("Look at those airplane’s over there.");
+         var p = new Paragraph("Look at those airplane's over there.");
          var c = CorrectionFactory.CreateCorrectionFinder()
             .Find(p)
             .Single();
 
-         Assert.AreEqual(CorrectionType.OwnershipByAProperNoun, c.Type);
-         Assert.AreEqual("Look at those airplane’s over there", c.Sentence);
-         Assert.AreEqual("airplane’s", c.Word);
+         Assert.AreEqual(CorrectionType.IncorrectNounApostrophe, c.Type);
+         Assert.AreEqual("Look at those airplane's over there", c.Sentence);
+         Assert.AreEqual("airplane's", c.Word);
       }
    }
 }
