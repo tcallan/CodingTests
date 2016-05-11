@@ -26,7 +26,7 @@ NOTE: There are fully implemented unit tests for these scenarios. You just need 
 
 ### Summary
 
-Your goal is to implement the "CorrectionFinder" class to accomodate the logic described above.
+Your goal is to implement the "CorrectionFinder" class to accomodate the logic described above.  To this end, some tools have been laid out for you.  Specifically, the Dictionary class will tell you the type of of a word.  Noun, plural noun, etc...  At least to the extent of the text that is in the existing unit tests.  All you really need to do is find a way to read the text, analyze it, and report the right "corrections".
 
 ### Tools
 
