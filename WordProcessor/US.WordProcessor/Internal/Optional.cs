@@ -1,3 +1,5 @@
+using System;
+
 namespace US.WordProcessor.Internal
 {
    internal class Optional<T>
@@ -9,7 +11,7 @@ namespace US.WordProcessor.Internal
 
       public Optional(T value)
       {
-         HasValue = Equals(null, value);
+         HasValue = !Equals(null, value);
          Value = value;
       }
 
@@ -29,9 +31,19 @@ namespace US.WordProcessor.Internal
          return new Optional<T>(value);
       }
 
-      public static Optional<T> Emtpy<T>()
+      public static Optional<T> Empty<T>()
       {
          return new Optional<T>();
+      }
+
+      public static Optional<TResult> Map<T, TResult>(this Optional<T> optional, Func<T, TResult> func)
+      {
+         return optional.HasValue ? Of(func(optional.Value)) : Empty<TResult>();
+      }
+
+      public static T OrElse<T>(this Optional<T> optional, T value)
+      {
+         return optional.HasValue ? optional.Value : value;
       }
    }
 }

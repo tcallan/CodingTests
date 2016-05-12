@@ -13,7 +13,7 @@ namespace US.WordProcessor.Tests
          var c = CorrectionFactory.CreateCorrectionFinder()
             .Find(p)
             .ToList();
-         
+
          Assert.AreEqual(0, c.Count);
       }
 
@@ -76,6 +76,102 @@ namespace US.WordProcessor.Tests
          Assert.AreEqual(CorrectionType.IncorrectNounApostrophe, c.Type);
          Assert.AreEqual("Look at those airplane's over there", c.Sentence);
          Assert.AreEqual("airplane's", c.Word);
+      }
+
+      [TestMethod]
+      public void IsntNeedsAnApostropheCorrect()
+      {
+         var p = new Paragraph("It isn't an airplane.");
+         var c = CorrectionFactory.CreateCorrectionFinder()
+            .Find(p)
+            .ToList();
+
+         Assert.AreEqual(0, c.Count);
+      }
+
+      [TestMethod]
+      public void IsntNeedsAnApostropheIncorrect()
+      {
+         var p = new Paragraph("It isnt an airplane.");
+         var c = CorrectionFactory.CreateCorrectionFinder()
+            .Find(p)
+            .Single();
+
+         Assert.AreEqual(CorrectionType.MissingContractionApostrophe, c.Type);
+         Assert.AreEqual("It isnt an airplane", c.Sentence);
+         Assert.AreEqual("isnt", c.Word);
+      }
+
+      [TestMethod]
+      public void IsntCapitalizedNeedsAnApostropheCorrect()
+      {
+         var p = new Paragraph("Isn't it an airplane?");
+         var c = CorrectionFactory.CreateCorrectionFinder()
+            .Find(p)
+            .ToList();
+
+         Assert.AreEqual(0, c.Count);
+      }
+
+      [TestMethod]
+      public void IsntCaptializedNeedsAnApostropheIncorrect()
+      {
+         var p = new Paragraph("Isnt it an airplane?");
+         var c = CorrectionFactory.CreateCorrectionFinder()
+            .Find(p)
+            .Single();
+
+         Assert.AreEqual(CorrectionType.MissingContractionApostrophe, c.Type);
+         Assert.AreEqual("Isnt it an airplane", c.Sentence);
+         Assert.AreEqual("Isnt", c.Word);
+      }
+
+      [TestMethod]
+      public void WontNeedsAnApostropheCorrect()
+      {
+         var p = new Paragraph("The airplane won't fly.");
+         var c = CorrectionFactory.CreateCorrectionFinder()
+            .Find(p)
+            .ToList();
+
+         Assert.AreEqual(0, c.Count);
+      }
+
+      [TestMethod]
+      public void WontNeedsAnApostropheIncorrect()
+      {
+         var p = new Paragraph("The airplane wont fly.");
+         var c = CorrectionFactory.CreateCorrectionFinder()
+            .Find(p)
+            .Single();
+
+         Assert.AreEqual(CorrectionType.MissingContractionApostrophe, c.Type);
+         Assert.AreEqual("The airplane wont fly", c.Sentence);
+         Assert.AreEqual("wont", c.Word);
+      }
+
+      [TestMethod]
+      public void DoesntNeedsAnApostropheCorrect()
+      {
+         var p = new Paragraph("The airplane doesn't fly.");
+         var c = CorrectionFactory.CreateCorrectionFinder()
+            .Find(p)
+            .ToList();
+
+         Assert.AreEqual(0, c.Count);
+      }
+
+      [TestMethod]
+      public void DoesntNeedsAnApostropheIncorrect()
+      {
+         var p = new Paragraph("The airplane doesnt fly.");
+         var c = CorrectionFactory.CreateCorrectionFinder()
+            .Find(p)
+            .Single();
+
+         Assert.AreEqual(CorrectionType.MissingContractionApostrophe, c.Type);
+         Assert.AreEqual("The airplane doesnt fly", c.Sentence);
+         Assert.AreEqual("doesnt", c.Word);
       }
    }
 }

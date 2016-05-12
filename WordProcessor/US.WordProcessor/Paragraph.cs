@@ -11,7 +11,7 @@ namespace US.WordProcessor
 
       public Paragraph(string source)
       {
-         _sentences = source.Split('.')
+         _sentences = source.Split('.', '?')
             .Where(IsNotEmpty)
             .Select(ToSentence)
             .ToList();

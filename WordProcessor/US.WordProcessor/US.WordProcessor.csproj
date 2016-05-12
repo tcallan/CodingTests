@@ -38,10 +38,13 @@
     <Compile Include="ICorrectionFinder.cs" />
     <Compile Include="CorrectionType.cs" />
     <Compile Include="Correction.cs" />
+    <Compile Include="Internal\CorrectionContext.cs" />
     <Compile Include="Internal\Definition.cs" />
     <Compile Include="Internal\DefinitionReader.cs" />
     <Compile Include="Internal\Dictionary.cs" />
+    <Compile Include="Internal\EnumerableExtensions.cs" />
     <Compile Include="Internal\Optional.cs" />
+    <Compile Include="Internal\Rules.cs" />
     <Compile Include="Paragraph.cs" />
     <Compile Include="Sentence.cs" />
     <Compile Include="Internal\SentenceReader.cs" />
